@@ -2,6 +2,18 @@
   sql_table_name: scratchpad.line_detail
   fields:
 
+# Dimensions
+
+  - dimension: index_number
+    type: int
+    sql: ${TABLE}.index_number
+
+  - dimension: child_sku
+    sql: ${TABLE}.child_sku
+
+  - dimension: parent_sku
+    sql: ${TABLE}.parent_sku
+
   - dimension: attribute_lv_3
     sql: ${TABLE}.attribute_lv_3
 
@@ -13,9 +25,6 @@
 
   - dimension: category
     sql: ${TABLE}.category
-
-  - dimension: child_sku
-    sql: ${TABLE}.child_sku
 
   - dimension: cloth_composition
     sql: ${TABLE}.cloth_composition
@@ -102,10 +111,6 @@
   - dimension: incoterms
     sql: ${TABLE}.incoterms
 
-  - dimension: index_number
-    type: int
-    sql: ${TABLE}.index_number
-
   - dimension: intake_margin_ex_vat
     type: number
     sql: ${TABLE}.intake_margin_ex_vat
@@ -139,9 +144,6 @@
     convert_tz: false
     sql: ${TABLE}.order_placement_date
 
-  - dimension: parent_sku
-    sql: ${TABLE}.parent_sku
-
   - dimension: retail_markup_ex_vat
     type: number
     sql: ${TABLE}.retail_markup_ex_vat
@@ -152,7 +154,7 @@
 
   - dimension: single_drop
     sql: ${TABLE}.single_drop
-
+ 
   - dimension: size
     sql: ${TABLE}.size
 
@@ -184,7 +186,9 @@
     type: number
     sql: ${TABLE}.weight
 
-  - measure: count
-    type: count
-    drill_fields: []
+# Measures
+
+  - measure: count_child_sku
+    type: count distinct
+    sql: ${TABLE}.child_SKU
 
