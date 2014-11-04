@@ -189,6 +189,7 @@
 # Measures
 
   - measure: count_child_sku
-    type: count distinct
+    type: count_distinct
     sql: ${TABLE}.child_SKU
+    drill_fields: []
 
